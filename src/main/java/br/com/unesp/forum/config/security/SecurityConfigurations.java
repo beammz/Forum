@@ -37,14 +37,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Override
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
-		// TODO Auto-generated method stub
 		return super.authenticationManager();
 	}
 	
 	//Configurações de autenticação (acesso, login)
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
 		auth.userDetailsService(autenticacaoService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
@@ -80,11 +78,6 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	
 	//Configuracoes de recursos estaticos(js, css, img)
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void configure(WebSecurity web) throws Exception {	
 	}
-	
-
-
 }

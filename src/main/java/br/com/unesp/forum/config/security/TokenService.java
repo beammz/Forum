@@ -21,7 +21,6 @@ public class TokenService {
 	private String secret;
 	
 	public String gerarToken(Authentication authentication) {
-		// TODO Auto-generated method stub
 		Usuario logado = (Usuario) authentication.getPrincipal();
 		Date hoje = new Date();
 		Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
