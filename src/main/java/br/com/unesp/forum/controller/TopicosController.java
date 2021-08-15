@@ -33,7 +33,7 @@ import br.com.unesp.forum.modelo.Topico;
 import br.com.unesp.forum.repository.CursoRepository;
 import br.com.unesp.forum.repository.TopicoRepository;
 
-@RestController /*Para não ter que ficar colocando responsebody*/
+@RestController
 @RequestMapping("/topicos")
 public class TopicosController {
 
