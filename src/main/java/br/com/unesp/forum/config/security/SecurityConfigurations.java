@@ -49,19 +49,18 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	//Configurações de autorização (url, perfil de acesso)
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
-		
-		
 		http.cors().and().authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/topicos").permitAll()
 		.antMatchers(HttpMethod.GET,"/topicos/*").permitAll()
 		.antMatchers(HttpMethod.POST,"/auth").permitAll()
 		.antMatchers(HttpMethod.GET,"/actuator/**").permitAll()
 		.antMatchers(HttpMethod.DELETE,"/topicos/*").hasRole("ADMIN")
+		.antMatchers("/h2-console/**").permitAll()
 		.anyRequest().authenticated()
 		.and().formLogin()
 		.and().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().headers().frameOptions().sameOrigin()
 		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
 	}
 	
