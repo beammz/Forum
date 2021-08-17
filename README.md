@@ -1,6 +1,6 @@
 # Forum
 ## Projeto de Sistemas Orientados a Objetos
-Esse Projeto foi feito com a finalidade que aprender um pouco sobre rest api. Esse projeto pode ser utilizado sozinho, porem afim de demostrar a sua utilização, fizemos um outro projeto que pode ser utilizado como front-end. Que pode ser encontrado aqui: *link aqui*
+Esse Projeto foi feito com a finalidade que aprender um pouco sobre rest api. Esse projeto pode ser utilizado sozinho, porem afim de demostrar a sua utilização, fizemos um outro projeto que pode ser utilizado como front-end. Que pode ser encontrado aqui: *https://github.com/cesardddp/forum-front-app*
 
 ### Feito com SpringBoot, Hibernate, H2
 Foram utilizados no projeto afim de facilitar e agilizar o desenvolvimento
