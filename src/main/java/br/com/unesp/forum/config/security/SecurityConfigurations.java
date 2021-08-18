@@ -57,7 +57,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.DELETE,"/topicos/*").hasRole("ADMIN")
 		.antMatchers("/h2-console/**").permitAll()
 		.anyRequest().authenticated()
-		.and().formLogin()
+		
 		.and().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().headers().frameOptions().sameOrigin()
