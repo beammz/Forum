@@ -4,10 +4,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import br.com.unesp.forum.modelo.Curso;
 import br.com.unesp.forum.modelo.Topico;
+import br.com.unesp.forum.modelo.Usuario;
 import br.com.unesp.forum.repository.CursoRepository;
+import br.com.unesp.forum.repository.UsuarioRepository;
 
 public class TopicoForm {
 	
@@ -19,6 +23,9 @@ public class TopicoForm {
 	
 	@NotNull @NotEmpty
 	private String nomeCurso;
+
+	// @NotNull @NotEmpty
+	// private String autorString;
 	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
@@ -31,9 +38,13 @@ public class TopicoForm {
 	public void setNomeCurso(String nomeCurso) {
 		this.nomeCurso = nomeCurso;
 	}
-	public Topico converter(CursoRepository cursoRepository) {
+	public Topico converter(CursoRepository cursoRepository, UsuarioRepository usuarioRepository){//}, Authentication TS) {
 		Curso curso = cursoRepository.findByNome(nomeCurso);
-		return new Topico(titulo, mensagem, curso);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Usuario autor = usuarioRepository.findByEmail(auth.getName()).get();
+		
+		return new Topico(titulo, mensagem, curso, autor);
 	}
 		
 }

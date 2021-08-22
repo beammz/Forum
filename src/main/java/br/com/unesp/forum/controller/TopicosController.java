@@ -32,6 +32,7 @@ import br.com.unesp.forum.controller.form.TopicoForm;
 import br.com.unesp.forum.modelo.Topico;
 import br.com.unesp.forum.repository.CursoRepository;
 import br.com.unesp.forum.repository.TopicoRepository;
+import br.com.unesp.forum.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/topicos")
@@ -42,6 +43,8 @@ public class TopicosController {
 	
 	@Autowired
 	private CursoRepository cursoRepository;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping
 	@Cacheable(value="listaDeTopicos")
@@ -61,7 +64,7 @@ public class TopicosController {
 	@Transactional
 	@CacheEvict(value="listaDeTopicos",allEntries=true)
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
-		Topico topico = form.converter(cursoRepository);
+		Topico topico = form.converter(cursoRepository,usuarioRepository);
 		topicoRepository.save(topico);
 		
 		URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();

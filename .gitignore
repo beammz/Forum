@@ -1,3 +1,6 @@
 /target/
 .project
 target/classes/application.properties
+target/classes/br/com/unesp/forum/modelo/Topico.class
+target/classes/br/com/unesp/forum/controller/TopicosController.class
+target/classes/br/com/unesp/forum/controller/form/TopicoForm.class
