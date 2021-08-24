@@ -60,6 +60,11 @@ public class TopicosController {
 		}
 	}
 	
+	/* Método para Cadastrar um tópico:
+	 * 
+	 * 
+	 * 
+	*/
 	@PostMapping
 	@Transactional
 	@CacheEvict(value="listaDeTopicos",allEntries=true)
@@ -71,7 +76,13 @@ public class TopicosController {
 		return ResponseEntity.created(uri).body(new TopicoDto(topico));
 	}
 	
-	@GetMapping("/{id}")
+	/* Método para Detalhar um tópico:
+	 * 
+	 * 
+	 * 
+	*/
+	
+	@GetMapping("/{id}") /*mapeamento-qnd esse método vai ser chamado qual o método http e como estou consultando dados, a requisição é do tipo get*/
 	public ResponseEntity<DetalhesDoTopicoDto> detalhar(@PathVariable Long id) {
 		Optional<Topico> topico = topicoRepository.findById(id);
 		if(topico.isPresent()) {
