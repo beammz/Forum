@@ -50,10 +50,16 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().authorizeRequests()
+		.antMatchers(HttpMethod.GET,"/cursos").permitAll()
 		.antMatchers(HttpMethod.GET,"/topicos").permitAll()
+<<<<<<< HEAD
 		.antMatchers(HttpMethod.POST,"/topicos").permitAll()
 		.antMatchers(HttpMethod.POST,"/topicos/**").permitAll()
 		.antMatchers(HttpMethod.GET,"/topicos/**").permitAll()
+=======
+		// .antMatchers(HttpMethod.POST,"/topicos").permitAll()
+		.antMatchers(HttpMethod.GET,"/topicos/*").permitAll()
+>>>>>>> c29846f406b466ef00ef065160876abca606d3aa
 		.antMatchers(HttpMethod.POST,"/auth").permitAll()
 		.antMatchers(HttpMethod.GET,"/actuator/**").permitAll()
 		.antMatchers(HttpMethod.DELETE,"/topicos/*").hasRole("ADMIN")
