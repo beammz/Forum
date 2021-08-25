@@ -16,8 +16,7 @@ public class RespostaForm {
 	}
 	
 	public Resposta converter() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Resposta(mensagem);
 	}
 
 
