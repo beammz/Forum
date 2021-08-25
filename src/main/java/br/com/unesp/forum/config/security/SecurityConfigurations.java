@@ -52,7 +52,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		http.cors().and().authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/cursos").permitAll()
 		.antMatchers(HttpMethod.GET,"/topicos").permitAll()
-		.antMatchers(HttpMethod.POST,"/topicos/*").permitAll()
+		//.antMatchers(HttpMethod.POST,"/topicos/*").permitAll()
 		.antMatchers(HttpMethod.POST,"/auth").permitAll()
 		.antMatchers(HttpMethod.GET,"/actuator/**").permitAll()
 		.antMatchers(HttpMethod.DELETE,"/topicos/*").hasRole("ADMIN")
