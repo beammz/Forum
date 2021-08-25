@@ -124,7 +124,7 @@ public class TopicosController {
 	@Transactional
 	public ResponseEntity<RespostaDto> responder(@PathVariable Long idTopico, @RequestBody @Valid RespostaForm form, UriComponentsBuilder uriBuilder) {
 	    Topico topico = topicoRepository.getById(idTopico);
-	    Resposta resposta = form.converter();
+	    Resposta resposta = form.converter(usuarioRepository);
 	    topico.adicionarResposta(resposta);
 
 	    URI uri = uriBuilder.path("/topicos/{id}/resposta/{idResposta}").buildAndExpand(topico.getId(), resposta.getId()).toUri();
