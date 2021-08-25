@@ -4,12 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import br.com.unesp.forum.modelo.Resposta;
-import br.com.unesp.forum.modelo.Usuario;
-import br.com.unesp.forum.repository.UsuarioRepository;
 
 public class RespostaForm {
 
@@ -19,12 +14,10 @@ public class RespostaForm {
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-
 	
-	public Resposta converter(UsuarioRepository usuarioRepository) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Usuario autor = usuarioRepository.findByEmail(auth.getName()).get();
-		return new Resposta(mensagem,autor);
+	public Resposta converter() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

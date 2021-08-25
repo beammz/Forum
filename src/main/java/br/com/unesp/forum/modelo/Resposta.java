@@ -26,11 +26,9 @@ public class Resposta {
 	private Usuario autor;
 	private Boolean solucao = false;
 
-	public Resposta(@NotNull @NotEmpty @Length(min = 10) String mensagem, Usuario autor) {
+	public Resposta(@NotNull @NotEmpty @Length(min = 10) String mensagem) {
 		super();
-		this.mensagem = mensagem;
-		this.autor = autor;
-		
+		this.mensagem = mensagem;		
 	}
 
 	@Override
