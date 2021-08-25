@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Resposta {
@@ -21,6 +25,13 @@ public class Resposta {
 	@ManyToOne
 	private Usuario autor;
 	private Boolean solucao = false;
+
+	public Resposta(@NotNull @NotEmpty @Length(min = 10) String mensagem, Usuario autor) {
+		super();
+		this.mensagem = mensagem;
+		this.autor = autor;
+		
+	}
 
 	@Override
 	public int hashCode() {

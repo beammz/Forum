@@ -26,9 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.unesp.forum.controller.dto.DetalhesDoTopicoDto;
+import br.com.unesp.forum.controller.dto.RespostaDto;
 import br.com.unesp.forum.controller.dto.TopicoDto;
 import br.com.unesp.forum.controller.form.AtualizacaoTopicoForm;
+import br.com.unesp.forum.controller.form.RespostaForm;
 import br.com.unesp.forum.controller.form.TopicoForm;
+import br.com.unesp.forum.modelo.Resposta;
 import br.com.unesp.forum.modelo.Topico;
 import br.com.unesp.forum.repository.CursoRepository;
 import br.com.unesp.forum.repository.TopicoRepository;
@@ -115,5 +118,16 @@ public class TopicosController {
 			return ResponseEntity.ok().build();			
 		}
 		return ResponseEntity.notFound().build();
+	}
+	
+	@PostMapping("/{id}/resposta")
+	@Transactional
+	public ResponseEntity<RespostaDto> responder(@PathVariable Long idTopico, @RequestBody @Valid RespostaForm form, UriComponentsBuilder uriBuilder) {
+	    Topico topico = topicoRepository.getById(idTopico);
+	    Resposta resposta = form.converter();
+	    topico.adicionarResposta(resposta);
+
+	    URI uri = uriBuilder.path("/topicos/{id}/resposta/{idResposta}").buildAndExpand(topico.getId(), resposta.getId()).toUri();
+	    return ResponseEntity.created(uri).body(new RespostaDto(resposta));
 	}
 }
