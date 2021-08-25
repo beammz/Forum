@@ -122,7 +122,7 @@ public class TopicosController {
 	
 	@PostMapping("/{id}/resposta")
 	@Transactional
-	public ResponseEntity<RespostaDto> responder(@PathVariable Long idTopico, @RequestBody @Valid RespostaForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<RespostaDto> responder(@PathVariable("id") Long idTopico, @RequestBody @Valid RespostaForm form, UriComponentsBuilder uriBuilder) {
 	    Topico topico = topicoRepository.getById(idTopico);
 	    Resposta resposta = form.converter();
 	    topico.adicionarResposta(resposta);

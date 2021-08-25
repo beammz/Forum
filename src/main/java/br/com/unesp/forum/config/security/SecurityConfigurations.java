@@ -57,7 +57,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET,"/actuator/**").permitAll()
 		.antMatchers(HttpMethod.DELETE,"/topicos/*").hasRole("ADMIN")
 		.antMatchers("/h2-console/**").permitAll()
-		.anyRequest().authenticated()
+		.anyRequest().authenticated() /*indica que outras urls que não foram configuradas devem ter acesso restrito*/
 		.and().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().headers().frameOptions().sameOrigin()
