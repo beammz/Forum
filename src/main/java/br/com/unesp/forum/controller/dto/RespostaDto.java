@@ -2,6 +2,8 @@ package br.com.unesp.forum.controller.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.domain.Page;
+
 import br.com.unesp.forum.modelo.Resposta;
 
 public class RespostaDto {
@@ -32,5 +34,10 @@ public class RespostaDto {
 
 	public String getNomeAutor() {
 		return nomeAutor;
+	}
+	
+	public static Page<RespostaDto> converter(Page<Resposta> respostas) {
+		// TODO Auto-generated method stub
+		return respostas.map(RespostaDto::new);
 	}
 }
